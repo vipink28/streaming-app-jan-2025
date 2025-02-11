@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
+import Row from '../components/Row';
 import { fetchNetflixOrginals, selectNetflixOriginals } from '../features/tv/tvSlice';
 
 const Homescreen = () => {
@@ -17,6 +18,10 @@ const Homescreen = () => {
                     <Header video={data.results[Math.floor(Math.random() * data.results.length)]} />
                     : <Loading />
             }
+
+            <div className='px-4'>
+                <Row />
+            </div>
         </>
     )
 }

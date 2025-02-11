@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { fetchNowPlayingMovies } from '../features/movie/movieSlice'
 import { IMG_URL } from '../helper/api-requests'
 import Ratings from './Ratings'
 
 const Header = ({ video }) => {
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(fetchNowPlayingMovies())
+    }, [])
     return (
         <div className='h-screen relative'>
             <img className='w-full h-full object-cover object-center' src={IMG_URL + video.backdrop_path} alt='' />
