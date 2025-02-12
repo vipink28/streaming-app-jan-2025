@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { apirequests } from "../../helper/api-requests";
+import { apirequests, endpoints, platformType } from "../../helper/api-requests";
 import tmdbApi from "../../helper/axios";
 
 const initialState = {
@@ -19,7 +19,7 @@ const initialState = {
 export const fetchUpcomingMovies = createAsyncThunk(
     "movie/fetchUpcomingMovies",
     async () => {
-        const response = await tmdbApi.get(apirequests.getCollection("movie", "upcoming"));
+        const response = await tmdbApi.get(apirequests.getCollection(platformType.movie, endpoints.upcoming));
         return response.data;
     }
 )
@@ -27,7 +27,7 @@ export const fetchUpcomingMovies = createAsyncThunk(
 export const fetchNowPlayingMovies = createAsyncThunk(
     "movie/fetchNowPlayingMovies",
     async () => {
-        const response = await tmdbApi.get(apirequests.getCollection("movie", "now_playing"));
+        const response = await tmdbApi.get(apirequests.getCollection(platformType.movie, endpoints.nowPlaying));
         return response.data;
     }
 )

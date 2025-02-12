@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Header from '../components/Header';
 import Loading from '../components/Loading';
 import Row from '../components/Row';
+import { fetchNowPlayingMovies, fetchUpcomingMovies, selectNowPlayingMovies, selectUpcomingMovies } from '../features/movie/movieSlice';
 import { fetchNetflixOrginals, selectNetflixOriginals } from '../features/tv/tvSlice';
 
 const Homescreen = () => {
@@ -20,7 +21,11 @@ const Homescreen = () => {
             }
 
             <div className='px-4'>
-                <Row />
+                <Row title="Upcoming Movies" action={fetchUpcomingMovies} selector={selectUpcomingMovies} />
+
+                <Row title="Now Playing Movies" action={fetchNowPlayingMovies} selector={selectNowPlayingMovies} />
+
+                <Row title="Netflix Originals" action={fetchNetflixOrginals} selector={selectNetflixOriginals} />
             </div>
         </>
     )

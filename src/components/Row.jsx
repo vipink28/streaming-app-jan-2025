@@ -4,19 +4,18 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { fetchUpcomingMovies, selectUpcomingMovies } from '../features/movie/movieSlice';
 import Card from './Card';
 
-const Row = () => {
-    const { data, status } = useSelector(selectUpcomingMovies);
+const Row = ({ action, selector, title, platform }) => {
+    const { data, status } = useSelector(selector);
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(fetchUpcomingMovies());
+        dispatch(action());
     }, [])
 
     return (
-        <div>
-            <h2>Upcoming Movies</h2>
+        <div className='py-3'>
+            <h2 className='text-2xl font-medium mb-3'>{title}</h2>
             <Swiper
                 spaceBetween={20}
                 slidesPerView={5}
