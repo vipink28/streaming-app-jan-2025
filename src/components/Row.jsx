@@ -26,7 +26,7 @@ const Row = ({ action, selector, title, platform }) => {
                     status === "success" &&
                     data.results.map((video) => (
                         <SwiperSlide key={video.id}>
-                            <Card video={video} />
+                            <Card video={video} platform={platform} />
                         </SwiperSlide>
                     ))
                 }

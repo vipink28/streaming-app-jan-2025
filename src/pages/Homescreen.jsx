@@ -5,6 +5,7 @@ import Loading from '../components/Loading';
 import Row from '../components/Row';
 import { fetchNowPlayingMovies, fetchUpcomingMovies, selectNowPlayingMovies, selectUpcomingMovies } from '../features/movie/movieSlice';
 import { fetchNetflixOrginals, selectNetflixOriginals } from '../features/tv/tvSlice';
+import { platformType } from '../helper/api-requests';
 
 const Homescreen = () => {
     const { data, status } = useSelector(selectNetflixOriginals); // (state) => state.tv.netflixOriginals
@@ -21,11 +22,11 @@ const Homescreen = () => {
             }
 
             <div className='px-4'>
-                <Row title="Upcoming Movies" action={fetchUpcomingMovies} selector={selectUpcomingMovies} />
+                <Row title="Upcoming Movies" action={fetchUpcomingMovies} selector={selectUpcomingMovies} platform={platformType.movie} />
 
-                <Row title="Now Playing Movies" action={fetchNowPlayingMovies} selector={selectNowPlayingMovies} />
+                <Row title="Now Playing Movies" action={fetchNowPlayingMovies} selector={selectNowPlayingMovies} platform={platformType.movie} />
 
-                <Row title="Netflix Originals" action={fetchNetflixOrginals} selector={selectNetflixOriginals} />
+                <Row title="Netflix Originals" action={fetchNetflixOrginals} selector={selectNetflixOriginals} platform={platformType.tv} />
             </div>
         </>
     )
