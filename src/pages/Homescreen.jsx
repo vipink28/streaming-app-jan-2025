@@ -17,7 +17,7 @@ const Homescreen = () => {
         <>
             {
                 status === "success" ?
-                    <Header video={data.results[Math.floor(Math.random() * data.results.length)]} />
+                    <Header video={data.results[Math.floor(Math.random() * data.results.length)]} platform={platformType.tv} />
                     : <Loading />
             }
 

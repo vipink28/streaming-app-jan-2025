@@ -8,13 +8,13 @@ import GenreList from './GenreList'
 import Ratings from './Ratings'
 import VideoPlayer from './VideoPlayer'
 
-const Header = ({ video }) => {
+const Header = ({ video, platform }) => {
     const dispatch = useDispatch();
     const { data, status } = useSelector(selectHeaderDetails);
     const [showVideo, setShowVideo] = useState(false);
     useEffect(() => {
         if (video) {
-            dispatch(fetchHeaderDetails({ platform: "tv", id: video.id }));
+            dispatch(fetchHeaderDetails({ platform: platform, id: video.id }));
         }
     }, [video])
 
