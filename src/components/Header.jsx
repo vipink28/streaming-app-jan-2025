@@ -35,7 +35,7 @@ const Header = ({ video, platform }) => {
                                 <h3 className='text-3xl text-orange-400'>{data.tagline}</h3>
                                 <p className='mt-4 text-xl'>{truncateText(data.overview, 180)}</p>
                                 <Ratings voteAverage={data.vote_average} voteCount={data.vote_count} />
-                                <GenreList genres={data.genres} />
+                                <GenreList genres={data.genres} platform={platform} />
                                 <div className='flex gap-3 py-2'>
                                     <button onClick={handleVideoPlayer} className='bg-red-500 py-2 px-5 rounded-full font-semibold'>Watch Now</button>
                                     <Link to={`/details/tv/${data.id}`} className='bg-green-900 py-2 px-5 rounded-full font-semibold'>More Info</Link>

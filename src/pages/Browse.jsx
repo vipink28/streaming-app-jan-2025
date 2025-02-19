@@ -6,6 +6,7 @@ import Loading from '../components/Loading';
 import Row from '../components/Row';
 import { fetchUpcomingMovies, selectUpcomingMovies } from '../features/movie/movieSlice';
 import { fetchNetflixOrginals, selectNetflixOriginals } from '../features/tv/tvSlice';
+import { shuffle } from '../helper';
 import { apirequests, platformType } from '../helper/api-requests';
 import tmdbApi from '../helper/axios';
 
@@ -17,7 +18,7 @@ const Browse = () => {
     const fetchGenreList = async (platform) => {
         try {
             const response = await tmdbApi.get(apirequests.getGenresList(platform))
-            setListOfGenres(response.data.genres);
+            setListOfGenres(shuffle(response.data.genres));
         }
         catch (err) {
             console.log(err);
